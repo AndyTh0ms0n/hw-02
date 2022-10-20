@@ -57,7 +57,7 @@ count(no_rows = TRUE)
 
 ```
 
-963 have more bathrooms than bedrooms
+963 properties have more bathrooms than bedrooms
 
 ### Exercise 4
 
@@ -68,15 +68,20 @@ ggplot(mapping = aes(x = rating)) +
   geom_bar() +
 facet_wrap(~neighbourhood)
 ```
+
 The Leith area is assessed the most compared to all other areas.
 The Tollcross area is assessed the least compared to all other areas.
 The graphs show that some areas of Edinburgh get visited and seen to more regular so there for the council are not targeting all areas of Edinburgh the same 
+
+
 ### Exercise 5
 
 ```{r hw2-ex5}
-
+council %>%
+mutate(assessment_date = dmy(assessment_date),
+       Month = month(assessment_date)) %>%
+filter(Month == "5") %>%
+count(no_rows = TRUE)
 ```
 
-
-_Remove this text, and add your answer for Exercise 5 here._
-
+There was 296 properties assessed in the month of May
