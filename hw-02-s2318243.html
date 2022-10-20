@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Andrew Thomson (S2318243)" />
+<meta name="author" content="Andrew Thomson (S2138243)" />
 
 <meta name="date" content="2022-10-20" />
 
@@ -357,7 +357,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">hw-02</h1>
-<h4 class="author">Andrew Thomson (S2318243)</h4>
+<h4 class="author">Andrew Thomson (S2138243)</h4>
 <h4 class="date">2022-10-20</h4>
 
 </div>
@@ -372,25 +372,49 @@ council &lt;- read_csv(&quot;data/council_assessments.csv&quot;)</code></pre>
 </div>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
-<pre class="r"><code># remove this comment and add the code for Exercise 1 here</code></pre>
-<p><em>Remove this text, and add your answer for Exercise 1
-here.</em></p>
+<pre class="r"><code>edibnb %&gt;%
+select(id, review_scores_rating, number_of_reviews) %&gt;%
+filter(review_scores_rating == &quot;100&quot;) %&gt;%
+  arrange(desc(number_of_reviews)) %&gt;%
+  slice(1)</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##       id review_scores_rating number_of_reviews
+##    &lt;dbl&gt;                &lt;dbl&gt;             &lt;dbl&gt;
+## 1 860170                  100               612</code></pre>
+<p>ID 860170</p>
 </div>
 <div id="exercise-2" class="section level3">
 <h3>Exercise 2</h3>
-<pre class="r"><code># remove this comment and add the code for Exercise 2 here</code></pre>
+<pre class="r"><code>edibnb %&gt;%
+select(price, neighbourhood, accommodates) %&gt;%
+filter(neighbourhood == &quot;Southside&quot;,
+       accommodates &gt;= &quot;4&quot;) %&gt;%
+summarise(minimum_price = min(price),
+          maximum_price = max(price),
+          average_price = mean(price))</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##   minimum_price maximum_price average_price
+##           &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1            10           748          143.</code></pre>
 <p><em>Remove this text, and add your answer for Exercise 2
 here.</em></p>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
-<pre class="r"><code># remove this comment and add the code for Exercise 3 here</code></pre>
+<pre class="r"><code>edibnb %&gt;%
+mutate(number_of_bathrooms = ceiling(bathrooms)) %&gt;%
+select(number_of_bathrooms, bedrooms) %&gt;%
+filter(number_of_bathrooms &gt; bedrooms) %&gt;%
+count(no_rows = TRUE)</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   no_rows     n
+##   &lt;lgl&gt;   &lt;int&gt;
+## 1 TRUE      963</code></pre>
 <p><em>Remove this text, and add your answer for Exercise 3
 here.</em></p>
 </div>
 <div id="exercise-4" class="section level3">
 <h3>Exercise 4</h3>
-<pre class="r"><code># remove this comment and add the code for Exercise 4 here</code></pre>
 <p><em>Remove this text, and add your answer for Exercise 4
 here.</em></p>
 </div>
